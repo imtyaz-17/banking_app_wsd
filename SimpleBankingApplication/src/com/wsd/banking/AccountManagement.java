@@ -85,7 +85,26 @@ public class AccountManagement {
 
 
 	protected static void displayAllAccounts() {
-    }
+	    System.out.println("\n===== Displaying all accounts =====");
+	    if (accounts.isEmpty()) {
+	        System.out.println("No accounts found.");
+	    } else {
+	        String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-10s |",
+	                "Account Type", "Account Holder", "Number", "Creation Date", "Balance");
+	        
+	        System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+	        System.out.println(header);
+	        System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+
+	        for (BankAccount account : accounts) {
+	            String accountInfo = String.format("| %-12s | %-20s | %-8s | %-15s | %-10.2f |",
+	                    account.getAccountType(), account.getName(), account.getNumber(),
+	                    account.getCreationDate(), account.getBalance());
+	            System.out.println(accountInfo);
+	        }
+	        System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+	    }
+	}
 
 	protected static void updateAccount() {
     }

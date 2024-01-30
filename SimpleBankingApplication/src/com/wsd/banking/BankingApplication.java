@@ -47,14 +47,17 @@ public class BankingApplication {
         scanner.close();
     }
     private static void displayMenu() {
-        System.out.println("\n===== Banking Application Menu =====\n" +
-                "1. Create a new account\n" +
-                "2. Display all accounts\n" +
-                "3. Update an account\n" +
-                "4. Delete an account\n" +
-                "5. Deposit an amount into your account\n" +
-                "6. Withdraw an amount from your account\n" +
-                "7. Search for an account\n" +
-                "8. Exit");
+        System.out.println("+==================================+");
+        System.out.println("|     Banking Application Menu     |");
+        System.out.println("|----------------------------------|");
+        System.out.println("| 1. Create a new account          |");
+        System.out.println("| 2. Display all accounts          |");
+        System.out.println("| 3. Update an account             |");
+        System.out.println("| 4. Delete an account             |");
+        System.out.println("| 5. Deposit an amount             |");
+        System.out.println("| 6. Withdraw an amount            |");
+        System.out.println("| 7. Search for an account         |");
+        System.out.println("| 8. Exit                          |");
+        System.out.println("+==================================+");
     }
 }
