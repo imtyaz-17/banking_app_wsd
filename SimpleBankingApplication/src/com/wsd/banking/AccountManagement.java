@@ -87,7 +87,7 @@ public class AccountManagement {
 	protected static void displayAllAccounts() {
 	    System.out.println("\n===== Displaying all accounts =====");
 	    if (accounts.isEmpty()) {
-	        System.out.println("No accounts found.");
+	        System.out.println("No account found.");
 	    } else {
 	        String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-10s |",
 	                "Account Type", "Account Holder", "Number", "Creation Date", "Balance");
@@ -124,8 +124,20 @@ public class AccountManagement {
 	}
 
 	protected static void deleteAccount() {
+		System.out.println("\n===== Delete an account =====");
+		System.out.print("Enter the account number to delete: ");
+		int accountNumber = scanner.nextInt();
+		scanner.nextLine();
 
-    }
+		BankAccount accountToDelete = findAccountByNumber(accountNumber);
+		if (accountToDelete != null) {
+			accounts.remove(accountToDelete);
+			System.out.println("------------------------------------------------");
+			System.out.println("\nAccount deleted successfully.");
+		} else {
+			System.out.println("Account not found.");
+		}
+	}
 
 	protected static void searchAccount() {
 
