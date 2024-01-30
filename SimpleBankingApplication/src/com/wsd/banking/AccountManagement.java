@@ -107,18 +107,46 @@ public class AccountManagement {
 	}
 
 	protected static void updateAccount() {
-    }
+		System.out.println("\n===== Update an account =====");
+		System.out.print("Enter account number to update: ");
+		int accountNumber = scanner.nextInt();
+		scanner.nextLine(); 
+
+		BankAccount accountToUpdate = findAccountByNumber(accountNumber);
+		if (accountToUpdate != null) {
+			System.out.print("Enter new account holder's name: ");
+			String newName = scanner.nextLine();
+			accountToUpdate.setName(newName);
+			System.out.println("\nAccount updated successfully.");
+		} else {
+			System.out.println("\nAccount not found.");
+		}
+	}
 
 	protected static void deleteAccount() {
 
     }
 
-  
-
 	protected static void searchAccount() {
 
     }
 
-	
+	protected static BankAccount findAccountByNumber(int accountNumber) {
+		for (BankAccount account : accounts) {
+			if (account.getNumber() == accountNumber) {
+				return account;
+			}
+		}
+		return null;
+	}
+
+	public static boolean duplicateAccountByNumber(int accountNumber) {
+		for (BankAccount account : accounts) {
+			if (account.getNumber() == accountNumber) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
