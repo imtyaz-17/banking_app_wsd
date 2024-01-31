@@ -10,10 +10,10 @@ public class AccountManagement {
 
 	protected static void createAccount() {
 		System.out.println("\n===== Create a new account =====");
-		
+
 		// Choose the type of account
-		System.out.println("Choose account type:-\n" + "1. Current Account\n" + "2. Savings Account\n"
-				+ "3. Salary Account\n");
+		System.out.println(
+				"Choose account type:-\n" + "1. Current Account\n" + "2. Savings Account\n" + "3. Salary Account\n");
 		System.out.print("Enter your choice:");
 
 		int accountTypeChoice = scanner.nextInt();
@@ -74,7 +74,7 @@ public class AccountManagement {
 			System.out.print("Enter initial balance: ");
 			initialBalance = scanner.nextDouble();
 		}
-		
+
 		BankAccount newAccount;
 		newAccount = new BankAccount(accountType, name, number, creationDate, initialBalance);
 		accounts.add(newAccount);
@@ -83,34 +83,33 @@ public class AccountManagement {
 		System.out.println("\n==========================================");
 	}
 
-
 	protected static void displayAllAccounts() {
-	    System.out.println("\n===== Displaying all accounts =====");
-	    if (accounts.isEmpty()) {
-	        System.out.println("No account found.");
-	    } else {
-	        String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-10s |",
-	                "Account Type", "Account Holder", "Number", "Creation Date", "Balance");
-	        
-	        System.out.println("+--------------+----------------------+----------+-----------------+------------+");
-	        System.out.println(header);
-	        System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+		System.out.println("\n===== Displaying all accounts =====");
+		if (accounts.isEmpty()) {
+			System.out.println("No account found.");
+		} else {
+			String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-10s |", "Account Type", "Account Holder",
+					"Number", "Creation Date", "Balance");
 
-	        for (BankAccount account : accounts) {
-	            String accountInfo = String.format("| %-12s | %-20s | %-8s | %-15s | %-10.2f |",
-	                    account.getAccountType(), account.getName(), account.getNumber(),
-	                    account.getCreationDate(), account.getBalance());
-	            System.out.println(accountInfo);
-	        }
-	        System.out.println("+--------------+----------------------+----------+-----------------+------------+");
-	    }
+			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+			System.out.println(header);
+			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+
+			for (BankAccount account : accounts) {
+				String accountInfo = String.format("| %-12s | %-20s | %-8s | %-15s | %-10.2f |",
+						account.getAccountType(), account.getName(), account.getNumber(), account.getCreationDate(),
+						account.getBalance());
+				System.out.println(accountInfo);
+			}
+			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+		}
 	}
 
 	protected static void updateAccount() {
 		System.out.println("\n===== Update an account =====");
 		System.out.print("Enter account number to update: ");
 		int accountNumber = scanner.nextInt();
-		scanner.nextLine(); 
+		scanner.nextLine();
 
 		BankAccount accountToUpdate = findAccountByNumber(accountNumber);
 		if (accountToUpdate != null) {
@@ -140,8 +139,29 @@ public class AccountManagement {
 	}
 
 	protected static void searchAccount() {
+		System.out.println("\n===== Search for an account =====");
+		System.out.print("Enter account number to search: ");
+		int accountNumber = scanner.nextInt();
+		scanner.nextLine();
+		BankAccount searchedAccount = findAccountByNumber(accountNumber);
+		if (searchedAccount != null) {
+			System.out.println("\nAccount details:");
+			String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-10s |", "Account Type", "Account Holder",
+					"Number", "Creation Date", "Balance");
 
-    }
+			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+			System.out.println(header);
+			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+			String accountInfo = String.format("| %-12s | %-20s | %-8s | %-15s | %-10.2f |",
+					searchedAccount.getAccountType(), searchedAccount.getName(), searchedAccount.getNumber(),
+					searchedAccount.getCreationDate(), searchedAccount.getBalance());
+			System.out.println(accountInfo);
+			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+
+		} else {
+			System.out.println("Account not found.");
+		}
+	}
 
 	protected static BankAccount findAccountByNumber(int accountNumber) {
 		for (BankAccount account : accounts) {
