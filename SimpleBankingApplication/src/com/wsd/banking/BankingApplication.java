@@ -28,10 +28,10 @@ public class BankingApplication {
                 	AccountManagement.deleteAccount();
                     break;
                 case 5:
-                	//AccountTransaction.deposit();
+                	AccountTransaction.deposit();
                     break;
                 case 6:
-                	//AccountTransaction.withdraw();
+                	AccountTransaction.withdraw();
                     break;
                 case 7:
                 	AccountManagement.searchAccount();
