@@ -64,6 +64,17 @@ public class AccountManagement {
 			System.out.print("Enter creation date: ");
 			creationDate = scanner.nextLine();
 		}
+		
+		// contact number
+		System.out.print("Enter contact number: ");
+		int contactNumber = scanner.nextInt();
+		while (!ValidationHelper.isValidNumber(contactNumber)) {
+			System.out.println(
+					"Invalid contactNumber number. Please enter a valid number.[account number can conatain only 0-9]");
+			System.out.print("Enter contact number: ");
+			number = scanner.nextInt();
+		}
+		scanner.nextLine();
 
 		// account initial balance
 		System.out.print("Enter initial balance: ");
@@ -76,7 +87,7 @@ public class AccountManagement {
 		}
 
 		BankAccount newAccount;
-		newAccount = new BankAccount(accountType, name, number, creationDate, initialBalance);
+		newAccount = new BankAccount(accountType, name, number, creationDate,contactNumber, initialBalance);
 		accounts.add(newAccount);
 		System.out.println("\n==========================================");
 		System.out.println("\tNew Account created successfully.");
@@ -88,20 +99,20 @@ public class AccountManagement {
 		if (accounts.isEmpty()) {
 			System.out.println("No account found.");
 		} else {
-			String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-10s |", "Account Type", "Account Holder",
-					"Number", "Creation Date", "Balance");
+			String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-15s | %-10s |", "Account Type", "Account Holder",
+					"Number", "Creation Date","Contact Number", "Balance");
 
-			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+			System.out.println("+--------------+----------------------+----------+-----------------+-----------------+------------+");
 			System.out.println(header);
-			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+			System.out.println("+--------------+----------------------+----------+-----------------+-----------------+------------+");
 
 			for (BankAccount account : accounts) {
-				String accountInfo = String.format("| %-12s | %-20s | %-8s | %-15s | %-10.2f |",
-						account.getAccountType(), account.getName(), account.getNumber(), account.getCreationDate(),
+				String accountInfo = String.format("| %-12s | %-20s | %-8s | %-15s | %-15s | %-10.2f |",
+						account.getAccountType(), account.getName(), account.getNumber(), account.getCreationDate(),account.getContactNumber(),
 						account.getBalance());
 				System.out.println(accountInfo);
 			}
-			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+			System.out.println("+--------------+----------------------+----------+-----------------+-----------------+------------+");
 		}
 	}
 
@@ -146,15 +157,15 @@ public class AccountManagement {
 		BankAccount searchedAccount = findAccountByNumber(accountNumber);
 		if (searchedAccount != null) {
 			System.out.println("\nAccount details:");
-			String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-10s |", "Account Type", "Account Holder",
-					"Number", "Creation Date", "Balance");
+			String header = String.format("| %-12s | %-20s | %-8s | %-15s | %-15s | %-10s |", "Account Type", "Account Holder",
+					"Number", "Creation Date","Contact Number", "Balance");
 
-			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
+			System.out.println("+--------------+----------------------+----------+-----------------+-----------------+------------+");
 			System.out.println(header);
 			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
-			String accountInfo = String.format("| %-12s | %-20s | %-8s | %-15s | %-10.2f |",
+			String accountInfo = String.format("| %-12s | %-20s | %-8s | %-15s | %-15s | %-10.2f |",
 					searchedAccount.getAccountType(), searchedAccount.getName(), searchedAccount.getNumber(),
-					searchedAccount.getCreationDate(), searchedAccount.getBalance());
+					searchedAccount.getCreationDate(),searchedAccount.getContactNumber(), searchedAccount.getBalance());
 			System.out.println(accountInfo);
 			System.out.println("+--------------+----------------------+----------+-----------------+------------+");
 

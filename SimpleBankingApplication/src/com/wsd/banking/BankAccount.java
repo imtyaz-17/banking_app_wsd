@@ -8,16 +8,18 @@ public class BankAccount {
     private String name;
     private int number;
     private String creationDate;
+    private int contactNumber;
     protected double balance;
     
     public static final double MIN_ACCOUNT_BALANCE = 500.0;
     
     // Constructor using the minimum balance from the account type
-    public BankAccount(AccountType accountType, String name, int number, String creationDate, double balance) {
+    public BankAccount(AccountType accountType, String name, int number, String creationDate,int contactNumber, double balance) {
         this.accountType = accountType;
         this.name = name;
         this.number = number;
         this.creationDate = creationDate;
+        this.contactNumber = contactNumber;
         this.balance = balance;
     }
 
@@ -58,6 +60,14 @@ public class BankAccount {
     public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
+    
+    public int getContactNumber() {
+    	return contactNumber;
+    }
+    
+    public void setContactNumber(int contactNumber) {
+    	this.contactNumber = contactNumber;
+    }
 
     public double getBalance() {
         return balance;
@@ -66,10 +76,5 @@ public class BankAccount {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
-    @Override
-    public String toString() {
-        return "Account [Type=" + accountType + ", name=" + name + ", number=" + number +
-                ", creationDate=" + creationDate + ", balance=" + balance + "]";
-    }
+    
 }
