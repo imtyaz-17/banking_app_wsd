@@ -39,8 +39,6 @@ public class AccountManagement {
 		System.out.print("Enter account holder's name: ");
 		String name = scanner.nextLine();
 		while (!ValidationHelper.isValidName(name)) {
-			System.out.println(
-					"Invalid name. Please enter a valid name.[name can conatain only a-z and more than two letters]");
 			System.out.print("Enter account holder's name: ");
 			name = scanner.nextLine();
 		}
@@ -49,8 +47,6 @@ public class AccountManagement {
 		System.out.print("Enter account number: ");
 		int number = scanner.nextInt();
 		while (!ValidationHelper.isValidNumber(number)) {
-			System.out.println(
-					"Invalid account number. Please enter a valid number.[account number can conatain only 0-9 and more than three digits.]");
 			System.out.print("Enter account number: ");
 			number = scanner.nextInt();
 		}
@@ -69,8 +65,6 @@ public class AccountManagement {
 		System.out.print("Enter contact number: ");
 		int contactNumber = scanner.nextInt();
 		while (!ValidationHelper.isValidNumber(contactNumber)) {
-			System.out.println(
-					"Invalid contactNumber number. Please enter a valid number.[account number can conatain only 0-9]");
 			System.out.print("Enter contact number: ");
 			number = scanner.nextInt();
 		}

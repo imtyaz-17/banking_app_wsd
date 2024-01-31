@@ -12,7 +12,20 @@ public class ValidationHelper {
     public static final double MIN_INITIAL_BALANCE_SALARY = 0.0;
 
     public static boolean isValidName(String name) {
-        return name != null && name.trim().length() >=3 && !containsNumberOrSpecialCharacter(name);
+        try {
+            if (name == null || name.trim().length() < 3) {
+                throw new IllegalArgumentException("Name must not be null and should have at least 3 characters.");
+            }
+
+            if (containsNumberOrSpecialCharacter(name)) {
+                throw new IllegalArgumentException("Name cannot contain digits or special characters.");
+            }
+
+            return true; // Validation passed
+        } catch (Exception e) {
+            System.out.println("Error validating name: " + e.getMessage());
+            return false;
+        }
     }
 
     private static boolean containsNumberOrSpecialCharacter(String input) {
@@ -21,8 +34,27 @@ public class ValidationHelper {
     }
 
     public static boolean isValidNumber(int number) {
-        return number > 0  && String.valueOf(number).length() > 3 && !AccountManagement.duplicateAccountByNumber(number);
+        try {
+            if (number <= 0) {
+                throw new IllegalArgumentException("Account number must be greater than 0.");
+            }
+
+            String numberStr = String.valueOf(number);
+            if (numberStr.length() <= 3) {
+                throw new IllegalArgumentException("Account number must have more than three digits.");
+            }
+
+            if (AccountManagement.duplicateAccountByNumber(number)) {
+                throw new IllegalArgumentException("Account number is already in use.");
+            }
+
+            return true; // Validation passed
+        } catch (Exception e) {
+            System.out.println("Error validating account number: " + e.getMessage());
+            return false;
+        }
     }
+
 
     public static boolean isValidCreationDate(String creationDate) {
         if (creationDate == null || creationDate.trim().isEmpty()) {
